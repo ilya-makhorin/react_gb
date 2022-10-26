@@ -1,6 +1,8 @@
 import './App.css';
 import React, {useState, useEffect, useCallback} from 'react';
 import {TextField, Fab} from "@material-ui/core";
+import Button from "@mui/material/Button";
+import {Link} from "react-router-dom";
 
 function App() {
   const [messageList, setMessagesList] = useState([]);
@@ -21,7 +23,7 @@ function App() {
     if (messageList.length > 0 && messageList[messageList.length - 1].author === 'me') {
       timer = setInterval(() => {
         setMessagesList([...messageList, {
-          text: 'сообщение бота',
+          text: 'Привет, Илья',
           author: 'bot'
         }]);
       }, 1500);
@@ -39,7 +41,7 @@ function App() {
 
 
   return (<div className='App'>
-
+        <Button variant="outlined"><Link to={"/" } style={{ textDecoration: 'none',color: 'blue' }}>Home</Link></Button>
         <div className='dashboard'>
           {messageList.map((message, index) => (
               <div key={index} className={`styleMessages ${message.author === 'me' ? 'me' : 'bot'} ${index}`}>
